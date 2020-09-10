@@ -6,7 +6,7 @@
           <el-form-item label="Votre question :">
             <el-input placeholder="" v-model="form.keyword"/>
           </el-form-item>
-          <el-button type="submit">Rechercher</el-button>
+          <el-button type="submit" @click="submit">Rechercher</el-button>
         </el-form>
       </el-col>
     </el-row>
@@ -15,12 +15,9 @@
       <el-collapse>
         <el-collapse-item v-for="(ask, index) in questions" :key="ask.id" :name="index">
           <template v-slot:title>{{ ask.label }} <span class="title-response"><i class="el-icon-edit"></i> {{ ask.nbAnswers }} réponses</span></template>
-
           <div v-for="(answer, index) in ask.answers" :key="index">
             <p>{{ answer.content }}</p>
-            <el-button :type="hasRateDown(answer.id) ? 'danger': 'default'" size="mini" @click="decrementRate(answer)" :disabled="hasRateDown(answer.id)"><i class="el-icon-remove-outline"></i></el-button>
-            <el-tag :type="getTypeRated(answer.rate)">{{ answer.rate }}</el-tag>
-            <el-button :type="hasRateUp(answer.id) ? 'success': 'default'" size="mini" @click="incrementRate(answer)" :disabled="hasRateUp(answer.id)"><i class="el-icon-circle-plus-outline"></i></el-button>
+            <rate-action :answer="answer"></rate-action>
           </div>
         </el-collapse-item>
       </el-collapse>
@@ -29,6 +26,8 @@
 </template>
 
 <script>
+import RateAction from './components/RateAction.vue';
+import Typed from 'typed.js';
 
 export default {
   name: 'App',
@@ -37,6 +36,12 @@ export default {
       form: {
         keyword: ''
       },
+      options: {
+        strings: ['Quelle formation pour un dev ?', 'La journée type...', 'Salarié ou freelance ?', 'Tapez votre question...'],
+        typeSpeed: 60,
+        backSpeed: 10
+      },
+      typedElement: null,
       loading: false, 
       questions: [
         {
@@ -68,56 +73,23 @@ export default {
         }
       ],
       activesQuestions: [],
-      storageKey: {
-        rated: 'enquete.dev:rated'
-      }
     }
+  },
+  mounted() {
+    this.typedElement = new Typed('.el-input__inner', this.options);
   },
   methods: {
     submit() {
       console.log(this.form.keyword);
+      this.loading = true;
+
+      setTimeout(() => {
+        this.loading = false;
+      }, 1000)
     },
-    getTypeRated(rate) {
-      if(rate > 0) return 'success';
-      if(rate < 0) return 'warning';
-      return 'info';
-    },
-    incrementRate(answer) {
-      answer.rate++;
-      this.setStorageRate(answer.id, 'up');
-    },
-    decrementRate(answer) {
-      answer.rate--;
-      this.setStorageRate(answer.id, 'down');
-    },
-    setStorageRate(id, state) {
-      let alreadyRated = JSON.parse(localStorage.getItem(this.storageKey.rated));
-      const rateIndex = alreadyRated?.findIndex(rate => rate.id === id);
-      console.log(rateIndex);
-      if(alreadyRated && alreadyRated.length) {
-        if(rateIndex !== -1) {
-          alreadyRated[rateIndex].state = state;
-        } else {
-          alreadyRated.push({ id, state: state });
-        }
-        localStorage.setItem(this.storageKey.rated, JSON.stringify(alreadyRated));
-      } else {
-        localStorage.setItem(this.storageKey.rated, JSON.stringify([{ id, state: state }]));
-      }
-    },
-    getStorageRate() {
-      return JSON.parse(localStorage.getItem(this.storageKey.rated));
-    },
-    hasRateUp(id) {
-      const rated = this.getStorageRate();
-      const rate = rated?.find(rate => rate.id === id);
-      return rate && rate?.state === 'up';
-    },
-    hasRateDown(id) {
-      const rated = this.getStorageRate();
-      const rate = rated?.find(rate => rate.id === id);
-      return rate && rate?.state === 'down';
-    }
+  },
+  components: {
+    RateAction
   }
 }
 </script>

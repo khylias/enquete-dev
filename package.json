@@ -1,5 +1,5 @@
 {
-  "name": "front",
+  "name": "enquete-dev",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
     "reset-css": "^5.0.1",
+    "typed.js": "^2.0.11",
     "vue": "^2.6.11"
   },
   "devDependencies": {
