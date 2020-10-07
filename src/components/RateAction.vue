@@ -1,8 +1,8 @@
 <template>
     <div>
-        <el-button :type="hasRateByState(answer.id, 'down') ? 'danger': 'default'" size="mini" @click="decrementRate(answer)" :disabled="hasRateByState(answer.id, 'down')"><i class="el-icon-remove-outline"></i></el-button>
-        <el-tag :type="getTypeRated(answer.rate)">{{ answer.rate }}</el-tag>
-        <el-button :type="hasRateByState(answer.id, 'up') ? 'success': 'default'" size="mini" @click="incrementRate(answer)" :disabled="hasRateByState(answer.id, 'up')"><i class="el-icon-circle-plus-outline"></i></el-button></div>    
+        <button :class="hasRateByState(answer.id, 'down') ? 'danger': 'default'" @click="decrementRate(answer)" :disabled="hasRateByState(answer.id, 'down')">-</button>
+        <div class="tag tag--mini" :type="getTypeRated(answer.rate)">{{ answer.rate }}</div>
+        <button :class="hasRateByState(answer.id, 'up') ? 'success': 'default'" @click="incrementRate(answer)" :disabled="hasRateByState(answer.id, 'up')">+</button></div>    
 </template>
 <script>
 import Storage from '../services/storage';

@@ -1,0 +1,23 @@
+.bg-dark {
+    background-color: $darkColor;
+}
+
+.bg-tonic {
+    background-color: $tonicColor;
+}
+
+.flex {
+    &-column {
+        display: flex;
+        flex-direction: column;
+    }
+    &-row {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 990px;
+}

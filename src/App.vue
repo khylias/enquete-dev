@@ -1,32 +1,31 @@
 <template>
-  <el-main id="app">
-     <el-row>
-      <el-col :span="12" :offset="6">
-        <el-form @submit.prevent.native="submit" ref="form" :model="form" label-position="top">
-          <el-form-item label="Votre question :">
-            <el-input placeholder="" v-model="form.keyword"/>
-          </el-form-item>
-          <el-button type="submit" @click="submit">Rechercher</el-button>
-        </el-form>
-      </el-col>
-    </el-row>
-    <el-divider></el-divider>
-    <el-container v-loading="loading" v-model="activesQuestions">
-      <el-collapse>
-        <el-collapse-item v-for="(ask, index) in questions" :key="ask.id" :name="index">
-          <template v-slot:title>{{ ask.label }} <span class="title-response"><i class="el-icon-edit"></i> {{ ask.nbAnswers }} réponses</span></template>
-          <div v-for="(answer, index) in ask.answers" :key="index">
-            <p>{{ answer.content }}</p>
-            <rate-action :answer="answer"></rate-action>
-          </div>
-        </el-collapse-item>
-      </el-collapse>
-    </el-container>
-  </el-main>
+  <div>
+    <app-header></app-header>
+      <form @submit.prevent="submit" ref="form" :model="form" label-position="top">
+          <input class="input-search" placeholder="" v-model="form.keyword"/>
+          <button type="submit" @click="submit">Rechercher</button>
+      </form>
+      <div class="container">
+          <details v-for="(ask, index) in questions" :name="index" :key="ask.id">
+            <summary>
+              {{ ask.label }} <span class="title-response"><i class="el-icon-edit"></i> {{ ask.nbAnswers }} réponses</span>
+            </summary>
+            <div>
+                <template v-for="(answer) in ask.answers"> 
+                  <div :key="answer.id">
+                    <p>{{ answer.content }}</p>
+                    <rate-action :answer="answer"></rate-action>
+                  </div>
+                </template>
+            </div>
+          </details>
+      </div>
+  </div>
 </template>
 
 <script>
 import RateAction from './components/RateAction.vue';
+import Header from './components/Header.vue';
 import Typed from 'typed.js';
 
 export default {
@@ -72,15 +71,13 @@ export default {
           nbAnswers: 4,
         }
       ],
-      activesQuestions: [],
     }
   },
   mounted() {
-    this.typedElement = new Typed('.el-input__inner', this.options);
+    this.typedElement = new Typed('.input-search', this.options);
   },
   methods: {
     submit() {
-      console.log(this.form.keyword);
       this.loading = true;
 
       setTimeout(() => {
@@ -89,7 +86,8 @@ export default {
     },
   },
   components: {
-    RateAction
+    RateAction,
+    'app-header': Header
   }
 }
 </script>
@@ -104,4 +102,9 @@ export default {
 .title-response {
   margin-left: 14px;
 }
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
 </style>
