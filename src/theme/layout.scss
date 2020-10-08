@@ -21,3 +21,36 @@
     margin: 0 auto;
     max-width: 990px;
 }
+
+.ask {
+    background-color: $tonicColor;
+    color: $white;
+    border-radius: 5px;
+}
+
+.answer {
+    background-color: $darkColor;
+    border-radius: 5px;
+    width: 95%;
+    margin: 0 auto;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        border: 8px solid transparent;
+        top: -16px;
+        left: 8px;
+        border-bottom-color: $darkColor;
+    }
+}
+
+.rates {
+    position: absolute;
+    bottom: -5px;
+    left: 15px;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
+}

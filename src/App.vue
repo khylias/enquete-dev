@@ -1,25 +1,23 @@
 <template>
   <div>
     <app-header></app-header>
-      <form @submit.prevent="submit" ref="form" :model="form" label-position="top">
-          <input class="input-search" placeholder="" v-model="form.keyword"/>
-          <button type="submit" @click="submit">Rechercher</button>
-      </form>
-      <div class="container">
-          <details v-for="(ask, index) in questions" :name="index" :key="ask.id">
-            <summary>
-              {{ ask.label }} <span class="title-response"><i class="el-icon-edit"></i> {{ ask.nbAnswers }} réponses</span>
+    <form @submit.prevent="submit" ref="form" class="form-search mb-6" :model="form" label-position="top">
+        <input class="input-search fs-3" placeholder="" @focus="typedElement.destroy()" v-model="form.keyword"/>
+        <button type="submit" class="submit-search" @click="submit"><i class="material-icons">send</i></button>
+    </form>
+    <div class="container px-3">
+        <details class="details mb-3" v-for="(ask, index) in questions" :name="index" :key="ask.id">
+            <summary class="ask mb-1 p-3">
+                {{ ask.label }} <span class="ml-3 fs-2"><i class="material-icons">comment</i> {{ ask.nbAnswers }} réponses</span>
             </summary>
-            <div>
-                <template v-for="(answer) in ask.answers"> 
-                  <div :key="answer.id">
+            <template v-for="(answer, index) in ask.answers"> 
+                <div :key="answer.id" class="answer mt-3 mb-2 p-3 pb-5" :class="{'mt-5': index > 0}">
                     <p>{{ answer.content }}</p>
-                    <rate-action :answer="answer"></rate-action>
-                  </div>
-                </template>
-            </div>
-          </details>
-      </div>
+                    <rate-action class="rates" :answer="answer"></rate-action>
+                </div>
+            </template>
+        </details>
+    </div>
   </div>
 </template>
 
@@ -91,20 +89,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.el-collapse {
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-}
-
-.title-response {
-  margin-left: 14px;
-}
-
-details summary::-webkit-details-marker {
-  display: none;
-}
-
-</style>

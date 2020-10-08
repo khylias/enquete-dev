@@ -1,6 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url('~material-design-icons/iconfont/MaterialIcons-Regular.eot'); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
+    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
+    url('~material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+}
+
 body {
     font-family: $font;
-    color: $white;
+}
+
+.fs-1 {
+    font-size: rem(12px);
+}
+
+.fs-2 {
+    font-size: rem(14px);
+}
+
+.fs-3 {
+    font-size: rem(18px);
 }

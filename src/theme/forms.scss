@@ -1,5 +1,21 @@
-.el-input {
-    .el-input__inner {
-        background-color: $darkColor;
-    }
+.form-search {
+    margin: 0 auto;
+    max-width: 720px;
+    position: relative;
+}
+
+.input-search {
+    width: 100%;
+    background-color: transparent;
+    border-width: 0 2px 2px 0;
+    border-radius: 0 0 5px 0;
+    border-style: solid;
+    border-color: $tonicColor;
+    padding: 10px 15px;
+}
+
+.submit-search {
+    position: absolute;
+    right: 0;
+    top: 0;
 }
