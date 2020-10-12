@@ -3,6 +3,7 @@
         <button class="rate fs-1" 
                 :class="{'active': hasRate}" 
                 @click="incrementRate(answer)">
+                <i class="material-icons">thumb_up</i>
                 {{ answer.rate }}
         </button>
     </div>    
@@ -57,20 +58,6 @@ export default {
 
 <style lang="scss" scoped>
     @import '../theme/_variables';
-    .rate {
-        background-color: darken($color: $darkColor, $amount: 10);
-        border-radius: 8px;
-        height: 20px;
-        padding: 2px 8px;
-        border: none;
-        transition: all 0.25s;
-        cursor: pointer;
-
-        &:hover,
-        &.active {
-            background-color: $tonicColor;
-            color: $white;
-        }
-    }
+    
 
 </style>
