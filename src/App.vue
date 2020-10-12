@@ -40,41 +40,22 @@ export default {
       },
       typedElement: null,
       loading: false, 
-      questions: [
-        {
-          id: 1,
-          label: 'Journée type du développeur',
-          nbAnswers: 110,
-          answers: [
-            {
-              id: 2,
-              content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium ad facilis odit, totam, eius ex sit nam, ut exercitationem in doloremque perspiciatis quam asperiores consectetur aliquam ipsam dicta ratione quod',
-              rate: 14
-            },
-            {
-              id: 3,
-              content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium ad facilis odit, totam, eius ex sit nam, ut exercitationem in doloremque perspiciatis quam asperiores consectetur aliquam ipsam dicta ratione quod',
-              rate: 0
-            },
-            {
-              id: 5,
-              content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium ad facilis odit, totam, eius ex sit nam, ut exercitationem in doloremque perspiciatis quam asperiores consectetur aliquam ipsam dicta ratione quod',
-              rate: -20
-            }
-          ]
-        },
-        {
-          id: 2,
-          label: 'Formation suivie',
-          nbAnswers: 4,
-        }
-      ],
+      questions: [],
     }
+  },
+  created() {
+        this.init();
   },
   mounted() {
     this.typedElement = new Typed('.input-search', this.options);
   },
   methods: {
+    init() {
+        this.getQuestions();
+    },
+    async getQuestions() {
+        await this.$http.get('/questions').then(response => this.questions = response.data);
+    },
     submit() {
       this.loading = true;
 
