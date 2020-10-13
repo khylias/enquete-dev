@@ -3,7 +3,7 @@
         <summary class="ask mb-1 p-3">
             {{ question.label }} <span class="ml-3 fs-2"><i class="material-icons">comment</i> {{ question.nbAnswers }} réponses</span>
         </summary>
-        <answer class="ask-details" v-for="(answer, index) in question.answers" :key="index" :answer="answer"></answer>
+        <answer class="ask-details" :style="`--animation-delay:${index}`" v-for="(answer, index) in question.answers" :key="index" :answer="answer"></answer>
     </details>
 </template>
 
@@ -54,7 +54,7 @@ export default {
 
         &-details {
             opacity: 0;
-            animation: 1s ease-in-out forwards fadeInDown;
+            animation: calc((var(--animation-delay) + 1) * 500ms) ease forwards fadeInDown;
         }
     }
 
