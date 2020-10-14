@@ -1,10 +1,7 @@
 <template>
-    <details class="details mb-3" :class="{'open': open}" @click="toggleDetails">
-        <summary class="ask mb-1 p-3">
-            {{ question.label }} <span class="ml-3 fs-2"><i class="material-icons">comment</i> {{ question.nbAnswers }} réponses</span>
-        </summary>
+    <div class="details mb-3">
         <answer class="ask-details" :style="`--animation-delay:${index}`" v-for="(answer, index) in question.answers" :key="index" :answer="answer"></answer>
-    </details>
+    </div>
 </template>
 
 <script>
@@ -35,38 +32,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    @import '../theme/_variables.scss';
-    details summary::-webkit-details-marker {
-        display: none;
-    }
-
-    details.open {
-        .ask-details {
-            opacity: 1;
-            transform: translateY(0px); // implicit, but good to specify explicitly
-        }
-    }
-
-    .ask {
-        background-color: lighten($color: $darkColor, $amount: 5) ;
-        color: $white;
-        border-radius: 5px;
-
-        &-details {
-            opacity: 0;
-            animation: calc((var(--animation-delay) + 1) * 500ms) ease forwards fadeInDown;
-        }
-    }
-
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translate3d(0, -100%, 0);
-        }
-
-        to {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-        }
+    .ask-details {
+       opacity: 0;
+       transform: translate3d(0);
     }
 </style>

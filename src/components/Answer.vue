@@ -27,6 +27,7 @@ export default {
         border-radius: 5px;
         margin: 20px 15px 0;
         position: relative;
+        color: $white;
 
         &:before {
             content: '';

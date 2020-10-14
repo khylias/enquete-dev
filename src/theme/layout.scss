@@ -47,3 +47,46 @@ $aligns: "center", "start", "end", "space-between", "space-around";
 body {
     background-color: $rice;
 }
+
+/**
+*   Vuesax
+*
+*/
+.vs-collapse-item {
+    &.open-item {
+        .vs-collapse-item--header {
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .vs-collapse-item--icon-header {
+            transform: translate(-50%, -50%) rotate(180deg);
+        }
+
+        .ask-details {
+            animation: calc((var(--animation-delay) + 1) * 250ms) ease-out forwards fadeInDown;
+        }
+    }
+}
+.vs-collapse-item--header {
+    background-color: $darkColor;
+    color: $white;
+    border-radius: 5px;
+}
+
+.vs-collapse-item--content {
+    background-color: $lightgrey;
+}
+
+.vs-collapse-item--icon-header {
+    transform: translate(-50%, -50%);
+    right: 0;
+}
+
+.vs-collapse-item.open-item {
+    .ask-details {
+        animation: calc((var(--animation-delay) + 1) * 250ms) ease-out forwards fadeInDown;
+    }
+}
+
+.vs-collapse-item--header {
+}

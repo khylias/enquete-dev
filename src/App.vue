@@ -2,9 +2,14 @@
   <div>
     <app-header></app-header>
     <search-bar class="container"></search-bar>
-    <div class="container px-3">
-        <question class="details mb-3" v-for="question in questions" :question="question" :key="question.id"></question>
-    </div>
+    <vs-collapse class="container px-3" type="margin">
+        <vs-collapse-item  v-for="question in questions" :key="question.id" icon-arrow="arrow_downward">
+            <template slot="header" @click="open">
+                {{ question.label }} <span class="ml-3 fs-2"><i class="material-icons">comment</i> {{ question.nbAnswers }} réponses</span>
+            </template>
+            <question class="ask mb-3" :question="question"></question>
+        </vs-collapse-item>
+    </vs-collapse>
   </div>
 </template>
 
@@ -30,6 +35,9 @@ export default {
         async getQuestions() {
             await this.$http.get('/questions').then(response => this.questions = response.data);
         },
+        open() {
+            console.log('hello')
+        }
     },
     components: {
         'app-header': Header,
