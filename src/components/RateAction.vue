@@ -1,10 +1,10 @@
 <template>
     <div>
-        <button class="rate fs-1" 
+        <button class="rate flex-row ai-center" 
                 :class="{'active': hasRate}" 
                 @click="incrementRate(answer)">
-                <i class="material-icons">thumb_up</i>
-                {{ answer.rate }}
+                <i class="material-icons trending-up fs-3">trending_flat</i>
+                <span>{{ answer.rate }}</span>
         </button>
     </div>    
 </template>
@@ -59,5 +59,22 @@ export default {
 <style lang="scss" scoped>
     @import '../theme/_variables';
     
+    .rate {
+        background-color: transparent;
+        border: none;
+        color: $white;
+        height: 100%;
+        &:hover {
+            cursor: pointer;
+            .trending-up {
+                transform: rotate(-90deg) translateX(2px);
+            }
+        }
+    }
 
+    .trending-up {
+        transform: rotate(-90deg);
+        transition: all .3s ease;
+    }
+ 
 </style>

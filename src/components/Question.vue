@@ -1,16 +1,21 @@
 <template>
-    <div class="details mb-3">
+    <div class="mb-3">
         <answer class="ask-details" :style="`--animation-delay:${index}`" v-for="(answer, index) in question.answers" :key="index" :answer="answer"></answer>
+        <reply @reply="addReply" :questionIndex="index"></reply>
     </div>
 </template>
 
 <script>
 import Answer from './Answer.vue';
+import Reply from './Reply.vue';
 export default {
     props: {
         question: {
             type: Object,
             required: true
+        },
+        index: {
+            type: Number
         }
     },
     data() {
@@ -23,17 +28,14 @@ export default {
             setTimeout(() => {
                 this.open = !this.open
             }, 2000);
+        },
+        addReply(content) {
+            this.question.answers.push({ content, isNew: true });
         }
     },
     components: {
-        Answer
+        Answer,
+        Reply
     }
 }
 </script>
-
-<style lang="scss" scoped>
-    .ask-details {
-       opacity: 0;
-       transform: translate3d(0);
-    }
-</style>

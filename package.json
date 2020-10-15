@@ -11,10 +11,12 @@
     "axios": "^0.20.0",
     "core-js": "^3.6.5",
     "material-design-icons": "^3.0.1",
+    "material-icons": "^0.3.1",
     "reset-css": "^5.0.1",
     "sass-rem": "^2.0.1",
     "typed.js": "^2.0.11",
     "vue": "^2.6.11",
+    "vue-router": "^3.4.6",
     "vuesax": "^3.12.2"
   },
   "devDependencies": {

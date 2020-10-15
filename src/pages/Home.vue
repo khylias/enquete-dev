@@ -1,6 +1,5 @@
 <template>
   <div>
-    <app-header></app-header>
     <search-bar class="container"></search-bar>
     <vs-collapse class="container px-3" type="margin">
         <vs-collapse-item  v-for="(question, index) in questions" :key="question.id" icon-arrow="arrow_downward">
@@ -19,8 +18,7 @@ import SearchBar from './components/SearchBar.vue';
 import Question from './components/Question.vue';
 
 export default {
-    name: 'App',
-      data() {
+    data() {
         return {
             questions: [],
         }

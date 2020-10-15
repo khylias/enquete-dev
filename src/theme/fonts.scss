@@ -1,19 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url('~material-design-icons/iconfont/MaterialIcons-Regular.eot'); /* For IE6-8 */
-  src: local('Material Icons'),
-    local('MaterialIcons-Regular'),
-    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff2') format('woff2'),
-    url('~material-design-icons/iconfont/MaterialIcons-Regular.woff') format('woff'),
-    url('~material-design-icons/iconfont/MaterialIcons-Regular.ttf') format('truetype');
-}
-
 .material-icons {
     font-family: 'Material Icons';
+    font-size: inherit;
 }
 
 body {
@@ -30,4 +19,18 @@ body {
 
 .fs-3 {
     font-size: rem(18px);
+}
+
+$sizes: (
+    "1": 12,
+    "2": 14px,
+    "3": 18px,
+    "4": 24px,
+    "5": 32px,
+);
+
+@each $name, $size in $sizes {
+    .fs-#{$name} {
+        font-size: $size;
+    }
 }
