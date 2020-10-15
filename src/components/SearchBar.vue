@@ -6,7 +6,7 @@
         </div>
         <form @submit.prevent="submit" ref="form" class="search-form mb-6 flex-row" :model="form" label-position="top">
             <input class="search-input fs-3" placeholder="Tapez votre question..." v-model="form.keyword"/>
-            <button type="submit" class="search-btn" @click="submit"><i class="material-icons">send</i></button>
+            <button type="submit" class="search-btn" @click="submit"><i class="material-icons">search</i></button>
         </form>
     </div>
 </template>
