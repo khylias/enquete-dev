@@ -1,8 +1,12 @@
 <template>
     <header class="flex-row mx-3 ai-center">
-        <h1>enquete.dev</h1>
-        <ul class="flex-item-right flex-row">
-            <li><a href=""><i class="material-icons">help_outline</i></a></li>
+        <router-link to="/">
+            <h1>enquete.dev</h1>
+        </router-link>
+        <ul class="flex-item-right flex-row ai-center">
+            <li>
+                <button class="btn"><i class="material-icons fs-3">help_outline</i></button>
+            </li>
             <li class="ml-4">
                 <router-link to="/account">
                     {{ labelAuth }}

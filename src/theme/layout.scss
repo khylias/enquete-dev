@@ -74,6 +74,7 @@ body {
     background-color: $darkColor;
     color: $white;
     border-radius: 5px;
+    padding: 15px 20px;
 }
 
 .vs-collapse-item--content {
@@ -86,7 +87,7 @@ body {
 
 .vs-collapse-item--icon-header {
     transform: translate(-50%, -50%);
-    right: 0;
+    right: 10px;
 }
 
 .con-content--item {

@@ -13,9 +13,8 @@
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import SearchBar from './components/SearchBar.vue';
-import Question from './components/Question.vue';
+import SearchBar from './../components/SearchBar.vue';
+import Question from './../components/Question.vue';
 
 export default {
     data() {
@@ -38,7 +37,6 @@ export default {
         }
     },
     components: {
-        'app-header': Header,
         SearchBar,
         Question
     }

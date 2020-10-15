@@ -1,10 +1,11 @@
 import VueRouter from 'vue-router';
 
 import Account from './pages/Account.vue';
+import Home from './pages/Home.vue';
 
 const routes = [
     { path: '/compte', component: Account },
-    // { path: '', component: Home },
+    { path: '', component: Home },
 ]
 
 // 3. Create the router instance and pass the `routes` option
