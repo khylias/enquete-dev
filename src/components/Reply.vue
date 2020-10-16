@@ -14,6 +14,10 @@
 <script>
 export default {
     props: {
+        questionId: {
+            type: String,
+            required: true
+        },
         questionIndex: {
             type: Number
         }
@@ -26,8 +30,10 @@ export default {
     },
     methods: {
         submit() {
-            console.log('submit');
-            this.$emit('reply', this.reply);
+            this.$emit('reply', { content: this.reply, isNew: true });
+            this.$http.post('/answers', {content: this.reply, questionId: this.questionId }).catch(error => {
+                this.$emit('error', error);
+            });
         },
         toggleAction() {
             console.log(document.getElementsByClassName('vs-collapse-item--content'));

@@ -8,7 +8,7 @@
                 <button class="btn"><i class="material-icons fs-3">help_outline</i></button>
             </li>
             <li class="ml-4">
-                <router-link to="/account">
+                <router-link to="/compte">
                     {{ labelAuth }}
                 </router-link>
             </li>

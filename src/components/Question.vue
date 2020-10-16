@@ -1,7 +1,7 @@
 <template>
     <div class="mb-3">
         <answer class="ask-details" :style="`--animation-delay:${index}`" v-for="(answer, index) in question.answers" :key="index" :answer="answer"></answer>
-        <reply @reply="addReply" :questionIndex="index"></reply>
+        <reply @reply="addReply" :questionIndex="index" :questionId="question.id"></reply>
     </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
             }, 2000);
         },
         addReply(content) {
-            this.question.answers.push({ content, isNew: true });
+            this.question.answers.push(content);
         }
     },
     components: {

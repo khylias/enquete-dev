@@ -1,6 +1,8 @@
 <template>
     <div>
-        hello
+        <form action="">
+            
+        </form>
     </div>
 </template>
 
