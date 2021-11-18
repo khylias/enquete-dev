@@ -1,69 +1,88 @@
-# enquete
+<p align="center">
+  <a href="https://github.com/khylias/enquete-dev">
+    <img src="src/assets/logo.png" alt="Logo" width="80" height="80">
+  </a>
 
-## Build Setup
+  <h3 align="center">Enquete.dev</h3>
 
-```bash
-# install dependencies
-$ npm install
+  <p align="center">
+    Trouvez les réponses à vos enquêtes sur le métier de développeur
+    <br />
+    <a href="https://enquete.dev">Site</a>
+    ·
+    <a href="https://github.com/khylias/enquete-dev/issues">Ajouter une question</a>
+     ·
+    <a href="https://github.com/khylias/enquete-dev/issues">Signaler un bug</a>
+  </p>
+</p>
 
-# serve with hot reload at localhost:3000
-$ npm run dev
 
-# build for production and launch server
-$ npm run build
-$ npm run start
 
-# generate static project
-$ npm run generate
+<!-- TABLE OF CONTENTS -->
+## Table des matières
+
+- [Table des matières](#table-des-matières)
+- [A propos du projet](#a-propos-du-projet)
+  - [Fait avec](#fait-avec)
+- [Getting Started](#getting-started)
+  - [Pré-requis](#pré-requis)
+  - [Installation](#installation)
+- [Contribution](#contribution)
+- [License](#license)
+- [Maintenance](#maintenance)
+
+## A propos du projet
+
+
+### Fait avec
+* [Vue](https://vuejs.org/)
+
+
+## Getting Started
+
+### Pré-requis
+
+* npm
+```sh
+npm install npm@latest -g
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+### Installation
 
-## Special Directories
+1. Clonez le dépôt
+```sh
+git clone https://github.com/khylias/enquete-dev.git
+```
+2. Installez les dépendances
+```sh
+npm install
+```
+3. Lancez le serveur de dev 
+```sh
+npm run serve
+```
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+<!-- CONTRIBUTING -->
+## Contribution
 
-### `assets`
+Ce sont les contributions qui font de la communauté open source est endroit si extraordinaire pour apprendre, inspirer et créer. Toutes les contributions que vous apportez sont **pleinement appréciées**.
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+1. Récupérer le projet
+2. Créez votre branche de feature (`git checkout -b feature/AmazingFeature`)
+3. Commitez vos modifications (`git commit -m 'Add some AmazingFeature'`)
+4. Poussez votre branche (`git push origin feature/AmazingFeature`)
+5. Ouvrez une Pull Request
 
 
-### `pages`
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+<!-- LICENSE -->
+## License
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+Distribué sous la licence du MIT. Voir `LICENSE` pour plus d'informations.
 
-### `plugins`
+<!-- CONTACT -->
+## Maintenance
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+Vincent Kraus - [@Khylias](https://twitter.com/khylias)
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+Dépôt Github: [https://github.com/khylias/enquete-dev](https://github.com/khylias/enquete-dev)
