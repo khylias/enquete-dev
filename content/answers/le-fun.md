@@ -7,7 +7,7 @@ author:
   name: Bob Lenon
   bio: All about bob lenon
   img: https://images.unsplash.com/photo-1534471770828-9bde524ee634?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60
-question: quelssontlesavantagesdumetier
+question: quels-sont-les-avantages-du-metier
 ---
 ## Le fun avant tout
 

@@ -1,4 +1,7 @@
 ---
 name: quelssontlesavantagesdumetier
-description: Quels sont les avantages du métier ?
+title: Quels sont les avantages du metier ?
+slug: quels-sont-les-avantages-du-metier
 ---
+
+C quoi la question
