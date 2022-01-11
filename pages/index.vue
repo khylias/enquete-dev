@@ -36,9 +36,9 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 export default {
-    async asyncData({ $content }: any) {
+    async asyncData({ $content }) {
         const answers = await $content('answers')
             .only(['title', 'description', 'img', 'slug', 'author'])
             .sortBy('createdAt', 'desc')
