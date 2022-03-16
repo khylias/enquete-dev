@@ -64,10 +64,12 @@ export default {
         },
         strategies: {
             github: {
-                clientId: '7e09141797be2a351030',
-                clientSecret: '3aeadee611b6c43b933a87a373440b27b33a1ecb',
+                clientId: process.env.API_GITHUB_CLIENT,
+                clientSecret: process.env.API_GITHUB_SECRET,
                 scope: ['user:email', 'public_repo'],
             },
         }
-    }
+    },
+    publicRuntimeConfig: {},
+    privateRuntimeConfig: {}
 }
