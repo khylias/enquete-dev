@@ -8,6 +8,8 @@
             <p class="mt-3 text-center text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-auto">
                 Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
             </p>
+
+            <button @click="createQuestion">Poser une question</button>
         </div>
         <section class="flex flex-wrap mx-auto my-8 mt-24">
             <NuxtLink
@@ -37,6 +39,8 @@
 </template>
 
 <script>
+import GithubService from '@/services/github.service';
+
 export default {
     async asyncData({ $content }) {
         const answers = await $content('answers')
@@ -60,27 +64,29 @@ export default {
     },
     created() {
         console.log(this.$auth.user);
-        // this.getForks();
     },
     methods: {
-        async setFork() {
-            // Get all users repos
+        async createQuestion() {
             try { 
 
-                const repos = await this.$axios.$get(`/users/${this.$auth.user.login}/repos`);
+                const repos = await GithubService.getRepositories(this.$auth.user.login);
                 const hasFork = repos.find(repo => repo.name === 'enquete-dev' && repo.fork);
 
                 if(hasFork) {
                     console.log('Has repos');
+                    await GithubService.updateForkOnMainRepo(this.$auth.user.login);
                 } else {
-                    await this.$axios.$post(`/repos/khylias/enquete-dev/forks`)
+                    GithubService.createFork();
                 }
+
+                await GithubService.createBranche(this.$auth.user.login);
+
                 // If exist create PR, if not create forks of enquete-dev
                 // console.log(forks);
             } catch(err) {
                 console.log(err);
             }
-        }
+        },
     }
 }
 </script>
