@@ -9,7 +9,7 @@ export default {
     head: {
         title: 'enquete',
         htmlAttrs: {
-            lang: 'en'
+            lang: 'fr'
         },
         meta: [
             { charset: 'utf-8' },
@@ -60,7 +60,7 @@ export default {
     auth: {
         redirect: {
             login: '/', // redirect user when not connected
-            callback: '/auth/github/callback'
+            callback: process.env.GITHUB_CALLBACK || '/auth/github/callback'
         },
         strategies: {
             github: {
