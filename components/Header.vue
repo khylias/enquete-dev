@@ -4,14 +4,16 @@
             <NuxtLink to="/">Enquete.dev</NuxtLink>
         </h1>
         <div>
-            <NuxtLink to="/comment-ca-marche" class="text-gray-700">Comment ça marche ?</NuxtLink>
-            <a href="https://github.com/khylias/enquete-dev" class="ml-4 text-gray-700">
-                Github
-            </a>
+            <NuxtLink to="/comment-ca-marche">Comment ça marche ?</NuxtLink>
+            <login-button class="ml-8"></login-button>
         </div>
     </header>
 </template>
 <script>
+import LoginButton from './LoginButton.vue';
 export default {
+    components: {
+        LoginButton
+    },
 }
 </script>

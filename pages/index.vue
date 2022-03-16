@@ -58,5 +58,29 @@ export default {
             asnwers: [],
         }
     },
+    created() {
+        console.log(this.$auth.user);
+        // this.getForks();
+    },
+    methods: {
+        async setFork() {
+            // Get all users repos
+            try { 
+
+                const repos = await this.$axios.$get(`/users/${this.$auth.user.login}/repos`);
+                const hasFork = repos.find(repo => repo.name === 'enquete-dev' && repo.fork);
+
+                if(hasFork) {
+                    console.log('Has repos');
+                } else {
+                    await this.$axios.$post(`/repos/khylias/enquete-dev/forks`)
+                }
+                // If exist create PR, if not create forks of enquete-dev
+                // console.log(forks);
+            } catch(err) {
+                console.log(err);
+            }
+        }
+    }
 }
 </script>
