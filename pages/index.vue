@@ -73,7 +73,6 @@ export default {
                 const hasFork = repos.find(repo => repo.name === 'enquete-dev' && repo.fork);
 
                 if(hasFork) {
-                    console.log('Has repos');
                     await GithubService.updateForkOnMainRepo(this.$auth.user.login);
                 } else {
                     GithubService.createFork();
