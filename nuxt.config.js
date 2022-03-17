@@ -71,5 +71,8 @@ export default {
         }
     },
     publicRuntimeConfig: {},
-    privateRuntimeConfig: {}
+    privateRuntimeConfig: {},
+    generate: {
+        fallback: true
+    }
 }
