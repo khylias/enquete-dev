@@ -59,6 +59,7 @@ export default {
     },
     auth: {
         redirect: {
+            login: '/',
             callback: '/auth/github/callback'
         },
         strategies: {
@@ -66,7 +67,6 @@ export default {
                 clientId: process.env.API_GITHUB_CLIENT,
                 clientSecret: process.env.API_GITHUB_SECRET,
                 scope: ['user:email', 'public_repo'],
-                redirectUri: 'https://enquete.dev/auth/github/callback/'
             },
         }
     },
