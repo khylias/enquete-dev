@@ -59,7 +59,7 @@ export default {
     },
     auth: {
         redirect: {
-            callback: '/auth/github/callback/'
+            callback: '/auth/github/callback'
         },
         strategies: {
             github: {
