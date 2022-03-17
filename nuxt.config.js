@@ -73,6 +73,9 @@ export default {
     publicRuntimeConfig: {},
     privateRuntimeConfig: {},
     generate: {
-        fallback: true
+        fallback: true,
+        routes: [
+            '/auth/github/callback'
+        ]
     }
 }
