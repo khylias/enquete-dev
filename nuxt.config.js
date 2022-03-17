@@ -67,6 +67,7 @@ export default {
                 clientId: process.env.API_GITHUB_CLIENT,
                 clientSecret: process.env.API_GITHUB_SECRET,
                 scope: ['user:email', 'public_repo'],
+                redirectUri: 'https://enquete.dev/auth/done/'
             },
         }
     },
