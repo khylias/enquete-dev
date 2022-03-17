@@ -59,15 +59,14 @@ export default {
     },
     auth: {
         redirect: {
-            login: '/', // redirect user when not connected
-            callback: process.env.GITHUB_CALLBACK || '/auth/github/callback'
+            callback: '/auth/github/callback/'
         },
         strategies: {
             github: {
                 clientId: process.env.API_GITHUB_CLIENT,
                 clientSecret: process.env.API_GITHUB_SECRET,
                 scope: ['user:email', 'public_repo'],
-                redirectUri: 'https://enquete.dev/auth/done/'
+                redirectUri: 'https://enquete.dev/auth/github/callback/'
             },
         }
     },
