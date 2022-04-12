@@ -1,5 +1,4 @@
 import { Service } from '@/services/service';
-export default ({ app: { $axios, $auth } }) => {
+export default ({ app: { $axios } }) => {
     Service.prototype.$axios = $axios;
-    Service.prototype.$auth = $auth;
 }

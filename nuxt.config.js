@@ -1,6 +1,6 @@
 export default {
     // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
-    ssr: false,
+    ssr: true,
 
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
@@ -48,14 +48,30 @@ export default {
     modules: [
         '@nuxt/content',
         '@nuxtjs/axios',
+        '@nuxtjs/auth-next',
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {
     },
     axios: {
-        baseUrl: 'https://localhost:3000'
+        baseUrl: process.env.API_ENDPOINT
     },
+    auth: {
+        redirect: {
+            login: '/',
+            callback: '/auth/github/callback'
+        },
+        strategies: {
+            github: {
+                clientId: process.env.API_GITHUB_CLIENT,
+                clientSecret: process.env.API_GITHUB_SECRET,
+                scope: ['user:email', 'public_repo'],
+            },
+        }
+    },
+    publicRuntimeConfig: {},
+    privateRuntimeConfig: {},
     generate: {
         fallback: true,
     }
