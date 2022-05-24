@@ -63,28 +63,38 @@ export default {
         }
     },
     created() {
-        this.createQuestion();
+        if (!!window.location.hash.length) {
+            this.getAccessToken();
+        }
     },
     methods: {
         async createQuestion() {
             try { 
 
-                const repos = await GithubService.getRepositories('');
+                const repos = await GithubService.getRepositories('khylias');
                 const hasFork = repos.find(repo => repo.name === 'enquete-dev' && repo.fork);
 
                 if(hasFork) {
-                    await GithubService.updateForkOnMainRepo('');
+                    await GithubService.updateForkOnMainRepo('khylias');
                 } else {
                     GithubService.createFork();
                 }
 
-                await GithubService.createBranche('');
+                await GithubService.createBranche('khylias');
 
                 // If exist create PR, if not create forks of enquete-dev
                 // console.log(forks);
             } catch(err) {
                 console.log(err);
             }
+        },
+        getAccessToken() {
+            var paramsString =window.location.hash.substring(1);
+            var searchParams = new URLSearchParams(paramsString);
+            console.log(searchParams.get('access_token'));
+            this.$auth.setUserToken(searchParams.get('access_token'))
+            .then(() => console.log('user set !'))
+            this.createQuestion();
         },
     }
 }

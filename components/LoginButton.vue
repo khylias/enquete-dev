@@ -30,9 +30,6 @@ console.log(user);
 export default {
     created() {},
     mounted() {
-        if (!!window.location.hash.length) {
-            this.getAccessToken();
-        }
     },
     methods: {
         async connect() {
@@ -42,12 +39,6 @@ export default {
             await this.$auth.logout()
         },
         connexion() {},
-        getAccessToken() {
-            var paramsString =window.location.hash.substring(1);
-            var searchParams = new URLSearchParams(paramsString);
-            console.log(searchParams.get('access_token'));
-            this.$auth.strategy.token.set(searchParams.get('access_token'))
-        },
     },
 }
 </script>
