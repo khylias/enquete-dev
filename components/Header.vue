@@ -7,6 +7,7 @@
             <NuxtLink to="/comment-ca-marche">Comment ça marche ?</NuxtLink>
             <login-button class="ml-8"></login-button>
         </div>
+        <div id="netlify-auth-modal"></div>
     </header>
 </template>
 <script>
