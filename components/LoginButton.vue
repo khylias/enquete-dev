@@ -1,47 +1,53 @@
 <template>
-  <!-- <button class="border rounded py-1.5 px-2" @click="connect">
-    <span v-if="!$auth.$state.user"> Se connecter </span>
-    <span v-else>Bonjour, {{$auth.user.login }}</span>
-  </button> -->
-  <button @click="connexion">Connexion</button>
+    <button
+        class="border rounded py-1.5 px-2"
+        @click="connect"
+    >
+        <span v-if="!$auth.$state.user"> Se connecter </span>
+        <span v-else>Bonjour, {{$auth.user.login }}</span>
+    </button>
 </template>
 
 <script>
-import NetlifyIdentity from 'netlify-identity-widget';
 // import GithubService from '@/services/github.service';
+import GoTrue from 'gotrue-js'
+import { get } from 'http'
+const isLocal = true
+
+// Instantiate the library, passing in the live API URL
+// and whether it should save cookies
+const auth = new GoTrue({
+    APIUrl: 'https://enquete.dev/.netlify/identity',
+    setCookie: !isLocal,
+})
+
+// Get the current user object, or null if no-ones logged in
+const user = auth.currentUser()
+
+// Log it for next time around
+console.log(user);
+
 export default {
-    created() {
-        },
+    created() {},
     mounted() {
-    
-        NetlifyIdentity.init({
-            container: '#netlify-auth-modal',
-            locale: 'fr'
-        })
-        let user = NetlifyIdentity.currentUser();
-        console.log('USER', user)
-
-        // NetlifyIdentity redirect to prod after login instead of localhost.
-
-
-        NetlifyIdentity.on('init', user => console.log('init', user));
-        NetlifyIdentity.on('login', user => console.log('login', user));
-        NetlifyIdentity.on('logout', () => console.log('Logged out'));
-        NetlifyIdentity.on('error', err => console.error('Error', err));
-        NetlifyIdentity.on('open', () => console.log('Widget opened'));
-        NetlifyIdentity.on('close', () => console.log('Widget closed'));
-
+        if (!!window.location.hash.length) {
+            this.getAccessToken();
+        }
     },
     methods: {
         async connect() {
-            await this.$auth.loginWith('github');
+            window.location = auth.loginExternalUrl('github');
         },
         async logout() {
             await this.$auth.logout()
         },
-        connexion() {
-            NetlifyIdentity.open()
-        }
+        connexion() {},
+        getAccessToken() {
+            var paramsString =window.location.hash.substring(1);
+            var searchParams = new URLSearchParams(paramsString);
+            console.log(searchParams.get('access_token'));
+            this.$auth.strategy.token.set(searchParams.get('access_token'))
+        },
     },
 }
 </script>

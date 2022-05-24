@@ -69,16 +69,16 @@ export default {
         async createQuestion() {
             try { 
 
-                const repos = await GithubService.getRepositories('khylias');
+                const repos = await GithubService.getRepositories('');
                 const hasFork = repos.find(repo => repo.name === 'enquete-dev' && repo.fork);
 
                 if(hasFork) {
-                    await GithubService.updateForkOnMainRepo('khylias');
+                    await GithubService.updateForkOnMainRepo('');
                 } else {
                     GithubService.createFork();
                 }
 
-                await GithubService.createBranche('khylias');
+                await GithubService.createBranche('');
 
                 // If exist create PR, if not create forks of enquete-dev
                 // console.log(forks);
