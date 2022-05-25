@@ -64,8 +64,8 @@ export default {
         },
         strategies: {
             github: {
-                clientId: process.env.API_GITHUB_CLIENT,
-                clientSecret: process.env.API_GITHUB_SECRET,
+                clientId: process.env.NUXT_ENV_API_GITHUB_CLIENT,
+                clientSecret: process.env.NUXT_ENV_API_GITHUB_SECRET,
                 scope: ['user:email', 'public_repo'],
             },
         }

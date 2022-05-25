@@ -5,6 +5,16 @@ class GithubService extends Service {
     //     window.location = 'https://github.com/login/oauth/authorize?client_id=7e09141797be2a351030&redirect_uri=http://localhost:3001/auth/github/callback&scope=user:email public_repo';
     // }
 
+    getAccessToken(code) {
+        return this.$axios.$post('https://github.com/login/oauth/access_token', {}, {
+            params: {
+                client_id: process.env.NUXT_ENV_API_GITHUB_CLIENT,
+                client_secret: process.env.NUXT_ENV_API_GITHUB_SECRET,
+                code,
+            }
+        })
+    }
+
     getRepositories(username) {
         return this.$axios.$get(`/users/${username}/repos`);
     }
