@@ -63,9 +63,6 @@ export default {
         }
     },
     created() {
-        if (!!window.location.hash.length) {
-            this.getAccessToken();
-        }
     },
     methods: {
         async createQuestion() {
@@ -87,14 +84,6 @@ export default {
             } catch(err) {
                 console.log(err);
             }
-        },
-        getAccessToken() {
-            var paramsString =window.location.hash.substring(1);
-            var searchParams = new URLSearchParams(paramsString);
-            console.log(searchParams.get('access_token'));
-            this.$auth.setUserToken(searchParams.get('access_token'))
-            .then(() => console.log('user set !'))
-            this.createQuestion();
         },
     }
 }
