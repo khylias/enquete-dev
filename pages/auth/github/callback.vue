@@ -12,7 +12,6 @@ export default {
         async getAccessToken() {
             const paramsString = window.location.search;
             const searchParams = new URLSearchParams(paramsString);
-            console.log(searchParams.get('code'));
             await GithubService.getAccessToken(searchParams.get('code'));
         },
 
